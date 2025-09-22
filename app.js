@@ -48,7 +48,10 @@ const {
 const app = express();
 
 mongoose
-	.connect(process.env.MONGO_URI || "mongodb://localhost:27017/brwd")
+	.connect(process.env.MONGO_URI || "mongodb://localhost:27017/brwd", {
+		serverSelectionTimeoutMS: 30000,
+		socketTimeoutMS: 30000,
+	})
 	.then(() => {
 		console.log("Database Connected");
 	})
