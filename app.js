@@ -55,6 +55,12 @@ mongoose
 	})
 	.then(() => {
 		console.log("Database Connected");
+		
+		app.listen(process.env.PORT || 3000, () => {
+			console.log(
+				`Server started on http://localhost:${process.env.PORT || 3000}/`
+			);
+		});
 	})
 	.catch((err) => console.log(err.message));
 
@@ -330,8 +336,3 @@ app.use("/admin/publication", PublicationRoutes);
 app.use("/admin/update", UpdateRoutes);
 app.use("/admin/stream1", Stream1Routes);
 
-app.listen(process.env.PORT || 3000, () => {
-	console.log(
-		`Server started on http://localhost:${process.env.PORT || 3000}/`
-	);
-});
